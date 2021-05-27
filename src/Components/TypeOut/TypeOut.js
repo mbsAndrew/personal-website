@@ -1,11 +1,10 @@
 import React from 'react';
+import styles from './TypeOut.module.scss';
 
-const TypeOut = ({ addClassName, string }) => {
-    const array = string.split("");
-    console.log(array);
+const TypeOut = ({ addClassName, string }) => {      
     return (
-        <div className={`type ${addClassName}`}>
-            {array.map(item => <span className={`type__item`}>{item}</span>)}
+        <div className={`${styles.type} ${addClassName}`}>
+            {string}
         </div>
     );
 };

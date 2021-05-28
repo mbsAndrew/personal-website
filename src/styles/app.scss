@@ -1,0 +1,9 @@
+@import "./reset";
+@import "./variables";
+
+
+body {
+    background: $background;
+    line-height: 1.5;
+    color: $white;
+}

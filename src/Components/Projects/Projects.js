@@ -4,8 +4,11 @@ const Projects = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch("/api/projects")
-        .then()
+        fetch("/api/projects/")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        });
     }, []);
 
     return (

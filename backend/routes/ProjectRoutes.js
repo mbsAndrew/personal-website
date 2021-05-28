@@ -1,21 +1,48 @@
 //Github
-import Github from 'github-api';
 require("dotenv").config();
-const { GITHUB_KEY, GITHUB_SECRET } = process.env;
+const fetch = require("node-fetch");
+const { GITHUB_KEY, GITHUB_SECRET, GITHUB_ACCESS } = process.env;
 const express = require("express");
 const router = express.Router();
+const baseURL = "https://api.github.com/";
 
-const gh = new Github({
-    username: GITHUB_KEY,
-    password: GITHUB_SECRET
-});
-
-console.log(gh);
 
 //may need middleware to get auth
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+    const profile = await gitProfile();    
+    const repos = await gitRepos(profile.data.repos_url);    
+    res.send({ user: profile, repos: repos});
+});
 
-})
+async function gitRepos(reposURL) {
+    console.log("reposURL", reposURL);
+    return new Promise((res, rej) => {
+        fetch(reposURL)
+        .then(data => data.json())
+        .then(response => {
+            console.log(response);
+            res({data: response, status: 200});
+        })
+    });
+}
+
+
+async function gitProfile() {
+    console.log("Hello?");
+    return new Promise((res, rej) => {
+        fetch(`${baseURL}users/${GITHUB_KEY}`, {
+            headers: {
+                "User-Agent": GITHUB_KEY,
+                "Authorization": `token ${GITHUB_ACCESS}`
+            }
+        })
+        .then(data => data.json())
+        .then(response => {
+            console.log(response);
+            res({ data: response, status: 200});
+        })
+    })
+}
 
 
 module.exports = router;

@@ -3,9 +3,9 @@ import styles from './TypeOut.module.scss';
 
 const TypeOut = ({ addClassName, string }) => {      
     return (
-        <div className={`${styles.type} ${addClassName}`}>
+        <span className={`${styles.type} ${addClassName}`}>
             {string}
-        </div>
+        </span>
     );
 };
 

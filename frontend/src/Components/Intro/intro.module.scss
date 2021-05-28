@@ -1,0 +1,36 @@
+@mixin margins__title {
+    padding: 0 1rem;
+}
+
+.intro {
+    display: flex;
+    padding: 2vw;
+    
+    .info {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .subtitle {
+        text-transform: uppercase;
+        font-size: small;
+        opacity: 0.75;
+        @include margins__title();
+    }
+
+    .title {
+        font-size: 6vw;
+        line-height: 92%;
+        @include margins__title();
+    }
+
+    .desc {        
+        @include margins__title();
+    }
+
+    .img {
+        max-width: 20vw;
+        height: auto;     
+        align-self: flex-start;   
+    }
+}

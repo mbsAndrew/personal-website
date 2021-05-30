@@ -52,8 +52,7 @@ async function gitCommits(array) {
     })])
 }
 
-async function gitRepos(reposURL) {
-    console.log("reposURL", reposURL);
+async function gitRepos(reposURL) {    
     return new Promise((res, rej) => {
         fetch(reposURL, options)
         .then(data => data.json())

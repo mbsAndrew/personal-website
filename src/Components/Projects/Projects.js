@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ProjectList from './ProjectList';
 
 const Projects = () => {
     const [data, setData] = useState([]);
@@ -6,14 +7,14 @@ const Projects = () => {
     useEffect(() => {
         fetch("/api/projects/")
         .then(res => res.json())
-        .then(data => {
-            console.log(data);
+        .then(data => {            
+            setData([data]);
         });
     }, []);
 
     return (
         <div className={""}>
-
+            <ProjectList projects={data[0]?.repos?.data || []} />
         </div>
     );
 };

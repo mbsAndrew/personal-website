@@ -13,11 +13,13 @@ function App() {
   return (
     <>      
       <Nav />
-      <Hero /> 
-      <Projects />
+      <Hero />       
       <Container>
         <Intro />
       </Container>    
+      <Container>
+        <Projects />
+      </Container>
       <Container>
         <Skills />
       </Container> 

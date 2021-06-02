@@ -1,0 +1,14 @@
+.commits {
+    display: flex;   
+    
+    .commitNow {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+
+        &:not(:first-child) {
+            flex: 1;
+            margin: 0 1rem;
+        }
+    }
+}

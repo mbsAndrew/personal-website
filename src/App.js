@@ -7,13 +7,14 @@ import './styles/app.scss';
 import Intro from './Components/Intro/Intro';
 import Skills from './Components/Skills/Skills';
 import Projects from './Components/Projects/Projects';
+import Music from './Components/Music/Music';
 
 
 function App() {
   return (
     <>      
       <Nav />
-      <Hero />       
+      <Hero />           
       <Container>
         <Intro />
       </Container>    

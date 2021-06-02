@@ -1,14 +1,19 @@
 import React from 'react';
 import Languages from './Languages';
+import styles from './projects.module.scss';
 
-const ProjectList = ({ projects }) => {
-    console.log("projects", projects);
+const ProjectList = ({ projects }) => {    
     return (
-        <>
+        <div className={styles.list}>
             {projects.map(project => {
-                return <Languages project={project} />
+                return <a href={project.html_url} target={"_blank"}>
+                    <div className={styles.project}>
+                    <h4>{project.name}</h4>
+                    <Languages project={project} />
+                </div>
+                </a>
             })}
-        </>
+        </div>
     );
 };
 

@@ -26,6 +26,7 @@ router.get("/", async (req, res) => {
 router.get("/languages/:name", async (req, res) => {
     const { name } = req.params;    
     const langs = await repoLanguages(name);
+    console.log("langs", langs);
     res.send({ languages: langs});
 });
 

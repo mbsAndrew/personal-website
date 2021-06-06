@@ -8,12 +8,14 @@ import Intro from './Components/Intro/Intro';
 import Skills from './Components/Skills/Skills';
 import Projects from './Components/Projects/Projects';
 import Music from './Components/Music/Music';
+import Contact from './Components/Contact/Contact';
 
 
 function App() {
   return (
     <>      
       <Nav />
+      <Contact />
       <Hero />           
       <Container>
         <Intro />
@@ -24,6 +26,7 @@ function App() {
       <Container>
         <Skills />
       </Container> 
+      
     </>
   );
 }

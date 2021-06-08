@@ -1,5 +1,79 @@
+$black: black;
+$input_padding: 0.75rem;
+
 .contact {
     display: flex;
+    height: 0;
+    width: 0;
+    transition: all 0.25s ease-in-out;   
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    &.open {    
+        height: 100vh;
+        width: 100vw;    
+        z-index: 5;  
+    }
+
+    .title {
+        color: $black;
+        font-size: 4vw;
+    }
+
+    .container {
+        margin: 5vh 4vw;
+        height: auto;
+        width: 100%;
+        background: rgba($color: #fff, $alpha: 0.95);    
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .input {
+        border: none;
+        outline: #f8f8f8;
+        padding: $input_padding;
+    }
+
+    .label {
+        color: $black;
+        font-weight: bolder;
+    }
+    
+    .email {
+        width: 30%;        
+    }
+    
+    .msg {
+        resize: none;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 0;
+
+        &.end {
+            flex: 1;
+            justify-content: flex-end;
+            margin-bottom: 0;
+
+            .button {
+                align-self: flex-start;
+                min-width: 25%;
+                background: none;
+                cursor: pointer;
+                border: 2px solid blue;
+                padding: $input_padding;
+            }
+        }
+    }
+    
 }
 
 .toggle {
@@ -10,4 +84,5 @@
     height: 40px;
     width: 40px;   
     border-radius: 50%;   
+    z-index: 10;
 }

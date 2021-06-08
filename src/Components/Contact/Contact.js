@@ -3,15 +3,14 @@ import Form from './Form';
 import styles from './contact.module.scss';
 
 const Contact = () => {
-    const [isOpen, setOpen] = useState(false);    
-    console.log(styles);
+    const [isOpen, setOpen] = useState(false);        
     return (
         <>            
             <button className={styles.toggle} onClick={() => setOpen(!isOpen)}>
                 Hello?
             </button>
             {isOpen &&
-                <div className={styles.contact}>
+                <div className={`${styles.contact} ${isOpen && styles.open}`}>
                     <Form />
                 </div>
             }            

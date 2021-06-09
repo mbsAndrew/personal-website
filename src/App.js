@@ -17,7 +17,7 @@ function App() {
       <Nav />
       <Contact />
       <Hero />           
-      <Container>
+      <Container isFlex isHalf>
         <Intro />
       </Container>    
       <Container>

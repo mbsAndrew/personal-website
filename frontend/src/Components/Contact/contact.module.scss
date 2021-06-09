@@ -1,5 +1,8 @@
+@import "../../styles/variables";
+
 $black: black;
 $input_padding: 0.75rem;
+
 
 .contact {
     display: flex;
@@ -68,7 +71,7 @@ $input_padding: 0.75rem;
                 min-width: 25%;
                 background: none;
                 cursor: pointer;
-                border: 2px solid blue;
+                border: 2px solid $accent;
                 padding: $input_padding;
             }
         }
@@ -85,4 +88,11 @@ $input_padding: 0.75rem;
     width: 40px;   
     border-radius: 50%;   
     z-index: 10;
+    border: none;
+    background: $background;
+    box-shadow: 0px 0px 6px 3px rgba($color: $accent, $alpha: 0.25);
+
+    &:hover {
+        box-shadow: 0px 0px 10px 3px rgba($color: $accent, $alpha: 0.25);
+    }
 }

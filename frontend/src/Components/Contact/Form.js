@@ -2,25 +2,20 @@ import React, { useState } from 'react';
 import { emailRegex } from '../../utils';
 import styles from './contact.module.scss';
 
-const Form = () => {
-    const [showError, setError] = useState(false);
+const Form = () => {    
     const [email, setEmail] = useState("");
-    const [msg, setMsg] = useState("");   
+    const [msg, setMsg] = useState("");  
+    const [notif, setNotif] = useState(""); 
+    const [isSending, setSend] = useState(false);
 
     const updateInput = (e) => {
-        const { type, value } = e.currentTarget;        
-        if (type.includes("email")) {
-            setEmail(value);
-        } else {
-            //validate length;
-            setMsg(value);
-        }
+        const { type, value } = e.currentTarget; 
+        type.toLowerCase().includes("email") ? setEmail(value) : setMsg(value);               
     }
 
     const validateSend = () => {
         if (email.match(emailRegex) && msg !== "") {
-            //send email
-            alert("valid");
+            //send email            
             fetch("/api/email/send", {
                 method: 'POST',
                 headers: {
@@ -33,16 +28,19 @@ const Form = () => {
             })
             .then(res => res.json())
             .then(data => {
+                //show notification here
                 console.log(data);
-            });
+            })
+            .catch(error => {
+                //error sending the email
+                setNotif("Error sending email, please try again");
+            })
         } else {
             //show error
-            alert("ERROR!");
+            setNotif("Please enter valid email and message");            
         }
     }
-
-    console.log(email);
-    console.log(msg);
+    
     return (
         <div className={`contact__container ${styles.container}`}>
             <h3 className={styles.title}>
@@ -65,9 +63,10 @@ const Form = () => {
             </div>
             <div className={`${styles.row} ${styles.end}`}>
                 <button className={styles.button} onClick={validateSend}>
-                    Send Email
+                    {isSending ? "" : "Send Email"}
                 </button>
             </div>
+            {notif !== "" && notif}
         </div>
     );
 };

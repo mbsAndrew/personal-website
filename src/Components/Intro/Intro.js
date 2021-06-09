@@ -5,7 +5,9 @@ import me from '../../assets/me.jpg';
 const Intro = () => {
     return (
         <div className={styles.intro}>
-            <img className={styles.img} src={me} alt={"Andrew Hansen headshot"} />
+            <div className={styles.imgContain}>
+                <img className={styles.img} src={me} alt={"Andrew Hansen headshot"} />
+            </div>
             <div className={styles.info}>
                 <p className={styles.subtitle}>
                     About Me

@@ -10,8 +10,7 @@
     
     .info {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        flex-direction: column;        
         @include margins__title();
     }
     
@@ -24,7 +23,8 @@
 
     .title {
         font-size: 6vw;
-        line-height: 134%;       
+        line-height: 134%;      
+        margin-bottom: 3rem; 
     }
 
     .desc {               
@@ -34,5 +34,21 @@
         max-width: 20vw;
         height: auto;     
         align-self: flex-start;   
+        clip-path: circle(50%);        
+    }
+
+    .imgContain {
+        position: relative;
+        &::after {
+            content: "";
+            height: 20vw;
+            width: 20vw;
+            left: 10px;
+            top: 10px;
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid $accent;
+            z-index: -1;
+        }
     }
 }

@@ -5,8 +5,7 @@ const { EMAIL_KEY, EMAIL_FROM, PERSONAL_EMAIL} = process.env;
 
 sgMail.setApiKey(EMAIL_KEY);
 
-router.post("/send", (req, res) => {
-    console.log(req.body);
+router.post("/send", (req, res) => {    
     const { email, msg } = req.body;
     sgMail.send({
         from: EMAIL_FROM,

@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import TypeOut from '../TypeOut/TypeOut';
 import Name from './Name';
 import styles from './index.module.scss';
+import Arrow from './Arrow';
 
 const Hero = () => {
+    const ref = useRef();
+
+    const scrollScreen = () => {
+        const { clientHeight } = ref.current;
+        console.log(clientHeight);
+        window.scrollTo({
+            top: clientHeight,
+            behavior: "smooth"
+        });        
+    }
+
     return (
-        <section className={styles.hero}>
+        <section ref={ref} className={styles.hero}>
             <Name>
                 <TypeOut string={"Andrew Hansen"} />
             </Name>
+            <Arrow onClick={scrollScreen} />
         </section>
     );
 };

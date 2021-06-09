@@ -1,3 +1,6 @@
+@import "../../styles/mixin";
+@import "../../styles/variables";
+
 @keyframes navText {
     from {
         transform: translateY(-50px);
@@ -6,6 +9,7 @@
         transform: translateY(0px);
     }
 }
+
 
 
 .nav {
@@ -24,14 +28,16 @@
         }
     }
     
-    .link {
-        color: red;
+    .link {        
+        color: $accent;
         overflow-y: hidden;
         margin: 0.25rem 1rem;
     }
 
     .text {
         transform: translateY(0px);
-        animation: navText 0.3s linear;        
+        animation: navText 0.3s linear; 
+        @include link--slide-bottom();          
+        
     }
 }

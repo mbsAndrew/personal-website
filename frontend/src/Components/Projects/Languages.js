@@ -4,6 +4,7 @@ import styles from './projects.module.scss';
 const Languages = ({ project }) => {
     const [total, setTotal] = useState(0);
     const [dataLang, setLang] = useState(new Map());
+    const colors = ["#24CFD3", "#04E762", "#F25F5C", "#A480CF"];
 
     useEffect(() => {
         project && getProjectLangs();
@@ -13,8 +14,7 @@ const Languages = ({ project }) => {
         fetch(`/api/projects/languages/${project.name}`)
         .then(data => data.json())
         .then(response => {      
-            const total = Object.values(response.languages.data).reduce((a, b) => a + b);
-            console.log("total", total);
+            const total = Object.values(response.languages.data).reduce((a, b) => a + b);            
             setTotal(total);
             setLang(cleanData(response.languages.data));
         });
@@ -29,15 +29,46 @@ const Languages = ({ project }) => {
     }
 
     function getPercentOf(num) {
-        return `${((num / total) * 100).toFixed(2)}%`;
+        return ((num / total) * 100);
     }
 
     function languageText() {
         const text = [];
+        let i = 0;
         dataLang.forEach((val, key) => {
-            text.push(`${key}: ${getPercentOf(val)}`);
+            text.push(<tspan fill={colors[i]}>{` ${key}: ${getPercentOf(val).toFixed(2)}% `}</tspan>);
+            i++;
         });
-        return text.join(" ");
+        return <>{text}</>;
+    }
+
+    //loops through all languages in the project and breaks them into circle stroke segments
+    function circlePaths() {
+        const circles = [];
+        const radius = 98;
+        const perim = 2 * Math.PI * radius;        
+        let i = 0;
+        let startAngle = -90;
+        let totalFilled = 0;
+        dataLang.forEach((val, key, map) => {
+            const percent = getPercentOf(val);
+            const offset = percent !== 100 ? perim - (perim * percent / 100) : 0;
+            const rotation = (totalFilled * 360 / 100) + startAngle;            
+            circles.push(
+                <circle cx={"100"} cy={"100"} r={radius} 
+                    fill={"transparent"} 
+                    strokeDasharray={perim} 
+                    strokeDashoffset={offset}
+                    stroke={colors[i]}
+                    title={key}
+                    strokeWidth={4}
+                    transform={`rotate(${rotation} 100 100)`}
+                />
+            )
+            i++;
+            totalFilled += percent;
+        });        
+        return <>{circles}</>;
     }
     
     return (
@@ -50,8 +81,8 @@ const Languages = ({ project }) => {
                         <textPath alignmentBaseline={"top"} xlinkHref={"#pathOne"}>
                             {languageText()}
                         </textPath>
-                    </text>                    
-                    <circle cx={"100"} cy={"100"} r={"100"} fill={"transparent"} stroke={"#fff"} stroke-dasharray="598 30" stroke-dashoffset="0" />
+                    </text>
+                    {circlePaths()}                    
                 </svg>
             }
         </>

@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 @mixin margins__title {
     padding: 0 1rem;
 }
@@ -9,23 +11,23 @@
     .info {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        @include margins__title();
     }
     
     .subtitle {
         text-transform: uppercase;
         font-size: small;
-        opacity: 0.75;
-        @include margins__title();
+        opacity: 0.75;   
+        color: $accent;    
     }
 
     .title {
         font-size: 6vw;
-        line-height: 92%;
-        @include margins__title();
+        line-height: 134%;       
     }
 
-    .desc {        
-        @include margins__title();
+    .desc {               
     }
 
     .img {

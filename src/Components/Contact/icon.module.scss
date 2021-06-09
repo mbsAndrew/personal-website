@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+
+.icon {
+    &.open {
+        .rect {
+            opacity: 0;
+        }
+
+        .bottomLine {
+            opacity: 1;
+        }
+    }
+
+    .rect, .bottomLine {
+        transition: opacity 0.25s ease-in-out;
+    }
+
+    .shape {
+        fill: transparent;
+        stroke-width: 2px;
+        stroke: $accent;
+    }
+
+
+    .bottomLine {
+        opacity: 0;
+        animation-delay: 0.2s;
+    }
+    
+}

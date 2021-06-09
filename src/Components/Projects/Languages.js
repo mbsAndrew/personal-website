@@ -39,15 +39,14 @@ const Languages = ({ project }) => {
         });
         return text.join(" ");
     }
-
-    console.log(dataLang);
+    
     return (
         <>
             {dataLang.size > 0 &&
                 <svg className={styles.svg} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="-2 0 203 200" xmlSpace="preserve">
                     <path id={"pathOne"} fill={"transparent"} d="M2.5,100.75c0,53.85,43.65,97.5,97.5,97.5s97.5-43.65,97.5-97.5" />
-                    <text x={"150"} width={"200"} textAnchor={"middle"}>
+                    <text className={styles.list} x={"150"} width={"200"} textAnchor={"middle"}>
                         <textPath alignmentBaseline={"top"} xlinkHref={"#pathOne"}>
                             {languageText()}
                         </textPath>

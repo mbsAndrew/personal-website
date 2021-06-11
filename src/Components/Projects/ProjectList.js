@@ -8,7 +8,7 @@ const ProjectList = ({ projects }) => {
             {projects.map(project => {
                 return <a href={project.html_url} target={"_blank"}>
                     <div className={styles.project}>
-                    <h4>{project.name}</h4>
+                    <h4 className={styles.name}>{project.name}</h4>
                     <Languages project={project} />
                 </div>
                 </a>

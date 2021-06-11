@@ -5,7 +5,7 @@ import ProjectList from './ProjectList';
 import styles from './projects.module.scss';
 
 const Projects = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([]);    
 
     useEffect(() => {
         fetch("/api/projects/")
@@ -13,13 +13,13 @@ const Projects = () => {
         .then(data => {            
             setData([data]);
         });
-    }, []);
-    console.log("projects data", data);
+    }, []);    
+    
     return (
         <div className={styles.projects}>
             <h2 className={styles.title}>
                 <TypeOut string={"Projects"} />
-            </h2>
+            </h2>            
             <ProjectList projects={data[0]?.repos?.data || []} />
             <Commits commits={data[0]?.commits || []} />
         </div>

@@ -12,7 +12,7 @@
 /build
 
 # assets
-/assets
+/frontend/src/assets
 
 # misc
 .DS_Store

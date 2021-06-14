@@ -14,19 +14,21 @@ router.post("/send", (req, res) => {
         subject: `New message from ${email}`,
         text: msg
     })
-    .then(() => {}, error => {
-        console.log("error", error);
+    .then((data) => {        
+        if (data[0]?.statusCode === 202) {
+            res.send({
+                status: 200,
+                msg: "Email sent successfully!"
+            })
+        }        
+    }, error => {                
         if (error.response) {           
             console.log(error.response.body); 
             res.send({
                 status: 500,
                 msg: "Email was unable to send, please try again"
             })
-        }
-        res.send({
-            status: 200,
-            msg: "Email sent successfully!"
-        })
+        }                
     })
 })
 

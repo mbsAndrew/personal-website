@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { emailRegex } from '../../utils';
 import styles from './contact.module.scss';
+import Notification from './Notification';
 
 const Form = () => {    
     const [email, setEmail] = useState("");
@@ -13,9 +14,16 @@ const Form = () => {
         type.toLowerCase().includes("email") ? setEmail(value) : setMsg(value);               
     }
 
+    const resetInit = () => {
+        setEmail("");
+        setMsg("");
+        setSend(false);
+    }
+
     const validateSend = () => {
         if (email.match(emailRegex) && msg !== "") {
-            //send email            
+            //send email       
+            setSend(true);             
             fetch("/api/email/send", {
                 method: 'POST',
                 headers: {
@@ -26,15 +34,20 @@ const Form = () => {
                     msg: msg
                 })
             })
-            .then(res => res.json())
-            .then(data => {
-                //show notification here
-                console.log(data);
-            })
-            .catch(error => {
-                //error sending the email
-                setNotif("Error sending email, please try again");
-            })
+                .then(res => res.json())
+                .then(data => {
+                    //show notification here                
+                    if (data.status === 200) {
+                        setNotif("Email sent successfully, thank you!");
+                        resetInit();
+                    }
+                })
+                .catch(error => {
+                    //error sending the email
+                    setNotif("Error sending email, please try again");
+                    setSend(false);
+                })
+                       
         } else {
             //show error
             setNotif("Please enter valid email and message");            
@@ -62,11 +75,11 @@ const Form = () => {
                 </textarea>
             </div>
             <div className={`${styles.row} ${styles.end}`}>
-                <button className={styles.button} onClick={validateSend}>
-                    {isSending ? "" : "Send Email"}
+                <button className={styles.button} onClick={validateSend} disabled={isSending}>
+                    {isSending ? "Currently Sending..." : "Send Email"}
                 </button>
             </div>
-            {notif !== "" && notif}
+            <Notification show={notif !== ""} onClick={() => setNotif("")}>{notif}</Notification>            
         </div>
     );
 };

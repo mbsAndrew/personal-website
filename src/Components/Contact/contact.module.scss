@@ -2,7 +2,7 @@
 
 $black: black;
 $input_padding: 0.75rem;
-
+$contact__background: #5C5C5C;
 
 .contact {
     display: flex;
@@ -21,8 +21,7 @@ $input_padding: 0.75rem;
         z-index: 5;  
     }
 
-    .title {
-        color: $black;
+    .title {        
         font-size: 4vw;
     }
 
@@ -30,7 +29,7 @@ $input_padding: 0.75rem;
         margin: 5vh 4vw;
         height: auto;
         width: 100%;
-        background: rgba($color: #fff, $alpha: 0.95);    
+        background: $contact__background;    
         padding: 3rem;
         display: flex;
         flex-direction: column;
@@ -39,12 +38,19 @@ $input_padding: 0.75rem;
 
     .input {
         border: none;
-        outline: #f8f8f8;
+        color: inherit;
+        box-shadow: 0px 0px 0px 1px #f8f8f8;        
+        border-radius: 4px;
         padding: $input_padding;
+        background: none;
+        transition: box-shadow ease-in-out 0.25s;
+
+        &:hover {
+            box-shadow: 0px 0px 0px 3px #f8f8f8; 
+        }
     }
 
-    .label {
-        color: $black;
+    .label {        
         font-weight: bolder;
     }
     
@@ -69,6 +75,7 @@ $input_padding: 0.75rem;
             .button {
                 align-self: flex-start;
                 min-width: 25%;
+                color: inherit;
                 background: none;
                 cursor: pointer;
                 border: 2px solid $accent;

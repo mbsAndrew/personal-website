@@ -11,16 +11,12 @@ const Commits = ({ commits }) => {
     useEffect(() => {
         const today = new Date();
         const start = new Date();  
-        start.setMonth(today.getMonth() - 3);
-        console.log("today", today);
-        console.log("start", start);      
+        start.setMonth(today.getMonth() - 3);          
         const newData = [...Array(4)].map((m, i) => { 
             const newDate = new Date();
             newDate.setMonth(start.getMonth() + i);
             return { date: newDate, total: 0}
-        });
-        console.log(newData);
-        console.log(commits);   
+        });        
         newData.map((obj, i) => {
             const arrDate = obj.date;            
             const filter = commits.filter((f, i) => {
@@ -40,7 +36,7 @@ const Commits = ({ commits }) => {
 
     return (
         <>
-        <h3>
+        <h3 className={styles.title}>
             <TypeOut string={"Commit Activity"} />
         </h3>
         <div className={styles.commits}>

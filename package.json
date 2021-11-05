@@ -5,12 +5,16 @@
   "dependencies": {
     "concurrently": "^6.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "frontend": "cd frontend && npm start",
     "backend": "cd backend && npm start",
-    "start": "concurrently \"npm run frontend\" \"npm run backend\""
+    "start": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "buildFront": "cd frontend npm run build",
+    "deploy": "gh-pages -d root"
   },
   "repository": {
     "type": "git",
@@ -21,5 +25,5 @@
   "bugs": {
     "url": "https://github.com/mbsAndrew/personal-website/issues"
   },
-  "homepage": "https://github.com/mbsAndrew/personal-website#readme"
+  "homepage": "https://github.com/mbsAndrew/personal-website/frontend/public/index.html"
 }

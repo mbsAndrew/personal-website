@@ -5,7 +5,7 @@ const data = [
     {
         name: "JavaScript",
         img: svgs.javascript,
-        start: 2014          
+        start: 2015          
     }, 
     {
         name: "React",
@@ -31,7 +31,7 @@ const data = [
     {
         name: "MongoDB",
         img: svgs.mongodb,
-        start: 2019        
+        start: 2020        
     },
     {
         name: "Express",
@@ -46,7 +46,7 @@ const data = [
     {
         name: "Adobe Suite",
         img: svgs.adobe,
-        start: 2019        
+        start: 2016        
     },
 ];
 

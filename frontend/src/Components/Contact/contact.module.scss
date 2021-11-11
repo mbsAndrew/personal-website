@@ -1,0 +1,105 @@
+@import "../../styles/variables";
+
+$black: black;
+$input_padding: 0.75rem;
+$contact__background: #5C5C5C;
+
+.contact {
+    display: flex;
+    height: 0;
+    width: 0;
+    transition: all 0.25s ease-in-out;   
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    &.open {    
+        height: 100vh;
+        width: 100vw;    
+        z-index: 5;  
+    }
+
+    .title {        
+        font-size: 4vw;
+    }
+
+    .container {
+        margin: 5vh 4vw;
+        height: auto;
+        width: 100%;
+        background: $contact__background;    
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .input {
+        border: none;
+        color: inherit;
+        box-shadow: 0px 0px 0px 1px #f8f8f8;        
+        border-radius: 4px;
+        padding: $input_padding;
+        background: none;
+        transition: box-shadow ease-in-out 0.25s;
+
+        &:hover {
+            box-shadow: 0px 0px 0px 3px #f8f8f8; 
+        }
+    }
+
+    .label {        
+        font-weight: bolder;
+    }
+    
+    .email {
+        width: 30%;        
+    }
+    
+    .msg {
+        resize: none;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 0;
+
+        &.end {
+            flex: 1;
+            justify-content: flex-end;
+            margin-bottom: 0;
+
+            .button {
+                align-self: flex-start;
+                min-width: 25%;
+                color: inherit;
+                background: none;
+                cursor: pointer;
+                border: 2px solid $accent;
+                padding: $input_padding;
+            }
+        }
+    }
+    
+}
+
+.toggle {
+    position: fixed;
+    cursor: pointer;
+    bottom: 2vw;
+    right: 2vw;
+    height: 40px;
+    width: 40px;   
+    border-radius: 50%;   
+    z-index: 10;
+    border: none;
+    background: $background;
+    box-shadow: 0px 0px 6px 3px rgba($color: $accent, $alpha: 0.25);
+
+    &:hover {
+        box-shadow: 0px 0px 10px 3px rgba($color: $accent, $alpha: 0.25);
+    }
+}

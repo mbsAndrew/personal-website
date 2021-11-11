@@ -1,0 +1,54 @@
+@import "../../styles/variables";
+
+@mixin margins__title {
+    padding: 0 1rem;
+}
+
+.intro {
+    display: flex;
+    padding: 2vw;
+    
+    .info {
+        display: flex;
+        flex-direction: column;        
+        @include margins__title();
+    }
+    
+    .subtitle {
+        text-transform: uppercase;
+        font-size: small;
+        opacity: 0.75;   
+        color: $accent;    
+    }
+
+    .title {
+        font-size: 6vw;
+        line-height: 134%;      
+        margin-bottom: 3rem; 
+    }
+
+    .desc {               
+    }
+
+    .img {
+        max-width: 20vw;
+        height: auto;     
+        align-self: flex-start;   
+        clip-path: circle(50%);        
+    }
+
+    .imgContain {
+        position: relative;
+        &::after {
+            content: "";
+            height: 20vw;
+            width: 20vw;
+            left: 10px;
+            top: 10px;
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid $accent;
+            z-index: -1;
+        }
+    }
+}

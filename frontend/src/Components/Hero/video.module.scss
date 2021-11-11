@@ -1,0 +1,22 @@
+@import "../../styles/variables";
+
+@mixin videoDefault {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.video {
+    @include videoDefault();  
+    overflow-x: hidden;  
+}
+
+.overlay {
+    @include videoDefault();
+    background: linear-gradient(to bottom, rgba($color: $background, $alpha: 0.6), rgba($color: $background, $alpha: 1))    
+}

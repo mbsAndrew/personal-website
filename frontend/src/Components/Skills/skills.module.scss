@@ -1,0 +1,77 @@
+@mixin boxSkew {
+    transform:
+    perspective(900px)
+    rotateX(60deg)
+    scale(0.7);
+}
+
+@mixin returnToFlat {
+    transform:
+    perspective(0)
+    rotateX(0)
+    scale(1);
+}
+
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2vw;
+
+    .title {
+        width: 100%;
+        font-size: 6vw;
+    }
+
+    .background {
+        @include boxSkew();
+        box-shadow: 0px 6px 20px #555;
+        transition:0.5s ease all;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .box {
+        margin: 1vw;
+        flex: 1 1 25vw;
+        height: 25vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;  
+        position: relative;              
+
+        &:hover {
+            .background {
+               @include returnToFlat();
+                box-shadow: 0px 0px 25px 8px #555;
+            }
+
+            .years {
+                @include returnToFlat();
+                opacity: 1;
+            }
+        }
+    }
+
+    .imgContainer {
+        align-self: center;
+        justify-self: center;
+    }
+
+    .img {
+        width: 100%;
+        filter:grayscale(100%);
+    }
+
+    .name {
+        text-align: center;
+    }
+
+    .years {
+        text-align: center;
+        @include boxSkew();
+        opacity: 0;
+        transition:0.5s ease transform, 0.1s ease opacity;
+    }
+}

@@ -1,0 +1,34 @@
+$white: #fff;
+
+@keyframes moveY {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    85% {
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundMove_right {    
+    from {       
+        background-position: 100% 0%;        
+        background-image: linear-gradient(to right, rgba($white, 1) 50%, transparent 50%);  
+    }    
+    50%{
+        background-position: 0% 0%;        
+    }
+    to {        
+        background-position: -100% 0%;       
+        background-image: linear-gradient(to right, rgba($white, 1) 50%, transparent 50%);  
+    }
+}
+
+.type {
+    animation: moveY 2s linear 0s, backgroundMove_right 1s linear 2.25s;           
+    background-size: 200% 200%;     
+}

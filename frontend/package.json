@@ -1,6 +1,5 @@
 {
-  "name": "frontend",
-  "homepage": "https://github.com/mbsAndrew/personal-website/",
+  "name": "frontend",  
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:9000",
